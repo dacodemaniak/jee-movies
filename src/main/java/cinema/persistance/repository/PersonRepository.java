@@ -9,7 +9,7 @@ import cinema.persistance.entity.Person;
 
 public interface PersonRepository extends JpaRepository<Person, Integer> {
 	Set<Person> findByName(String name);
-	Set<Person> findByfirstNameContainingIgnoreCase(String firstName);
+	Set<Person> findByNameContainingIgnoreCase(String Name);
 	
 	@Query("select p from Person p where extract(year from p.birthdate) = ?1")
 	Set<Person> findByBirthDateYear(int year);

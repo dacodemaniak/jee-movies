@@ -62,15 +62,15 @@ public class MovieController {
 	}
 
 }
-	
+
 //	@PostMapping
-//	@ResponseBody //retransformer l'info en json pour etre lu en front
+//	@ResponseBody 
 //	public Movie addMovie(@RequestBody Movie movie) {
 //		Movie movieSaved = movieRepository.save(movie);
 //		movieRepository.flush();
 //		return movieSaved;
 //	}
-//	
+////	
 //	@PutMapping("/setDirector")
 //	@ResponseBody
 //	public Optional<Movie> setDirector(@RequestParam ("d") int idDirector, @RequestParam ("m") int idMovie) {
