@@ -53,7 +53,7 @@ public class Movie {
 		this.director = director;
 		this.actors = new ArrayList<>();
 	}
-//tout mot avec @ -> annotation
+	//tout mot avec @ -> annotation
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -127,13 +127,5 @@ public class Movie {
 				.append(idMovie)
 				.toString(); 
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
