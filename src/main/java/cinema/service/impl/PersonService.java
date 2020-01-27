@@ -39,4 +39,14 @@ public class PersonService implements IPersonService{
 		return personRepository.findByName(name);
 	}
 
+	@Override
+	public Set<Person> getActorsByIdPerson(int idPerson) {
+		return personRepository.findActorsByidPerson(idPerson);
+	}
+
+	@Override
+	public Person addNewPerson(Person newPerson) {
+		return personRepository.save(newPerson);
+	}
+
 }
