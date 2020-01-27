@@ -98,7 +98,7 @@ public class MovieController {
 	 * Delete
 	 */
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/deleteMovie/{id}")
 	@ResponseBody
 	public Optional<Movie> deleteMovie(@PathVariable("id") int id_movie) {
 		return movieService.deleteMovie(id_movie);
