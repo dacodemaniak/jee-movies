@@ -14,4 +14,5 @@ public interface IMovieService {
 	Set<Movie> getMovieByPartialTitle(String partialTitle);
 	Set<Movie> getMoviesByDirector(int idDirector);
 	Set<Movie> getMovieByActor(int idActor);
+	
 }

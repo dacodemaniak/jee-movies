@@ -56,8 +56,5 @@ public class MovieService implements IMovieService {
 		// TODO Auto-generated method stub
 		return movieRepository.findByActorsIdPerson(idActor);
 	}
-	
-
-	
 
 }
