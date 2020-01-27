@@ -1,6 +1,8 @@
 package cinema.persistance.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -17,28 +19,36 @@ public class Person {
 	private Integer idPerson;
 	private String name;
 	private LocalDate birthdate;
+	private List<String> nationalities;
+	private String biography;
 	
 	public Person() {
 		super();
 	}
 	
 	public Person(String name) {
-		this(null,name,null);
+		this(null,name,null, null,null);
 	}
 
 	public Person(Integer idPerson, String name) {
-		this(idPerson, name, null);
+		this(idPerson, name, null, null, null);
 	}
 	
 	public Person(String name, LocalDate birthdate) {
-		this(null, name, birthdate);
+		this(null, name, birthdate,null,null);
+	}
+	
+	public Person(String name, LocalDate birthdate,List<String> nationalities) {
+		this(null, name, birthdate, nationalities,null);
 	}
 
-	public Person(Integer idPerson, String name, LocalDate birthdate) {
+	public Person(Integer idPerson, String name, LocalDate birthdate, List<String> nationalities, String biography) {
 		super();
 		this.idPerson = idPerson;
 		this.name = name;
 		this.birthdate = birthdate;
+		this.nationalities =  new ArrayList<>();
+		this.biography = biography;
 	}
 
 	@Id
@@ -69,6 +79,24 @@ public class Person {
 		this.birthdate = birthdate;
 	}
 	
+	@Column(name = "nationalities")
+	public List<String> getNationalities() {
+		return nationalities;
+	}
+
+	public void setNationalities(List<String> nationalities) {
+		this.nationalities = nationalities;
+	}
+
+	@Column(name = "biography", nullable = true)
+	public String getBiography() {
+		return biography;
+	}
+
+	public void setBiography(String biography) {
+		this.biography = biography;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder(name); //pour eviter de faire de + "" + ""+..etc
@@ -77,6 +105,9 @@ public class Person {
 					.append(')')
 					.append('#')
 					.append(idPerson)
+					.append(" (")
+					.append(nationalities)
+					.append(") ")
 					.toString(); 
 	}
 	
