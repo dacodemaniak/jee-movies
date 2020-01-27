@@ -18,5 +18,9 @@ public interface IMovieService {
 	Set<Movie> getMovieByYear(int year);
 	Set<Movie> getMovieByYearBetween(int year, int year_end);
 	Movie addMovie(Movie movie);
+	Optional<Movie> modifyMovie(Movie movie);
+	Optional<Movie> addActorToMovie(int id_movie, int id_actor);
+	Optional<Movie> addDirectorToMovie(int id_movie, int id_director);
+	Optional<Movie> deleteMovie(int id_movie);
 	
 }

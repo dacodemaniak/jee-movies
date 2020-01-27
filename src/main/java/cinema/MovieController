@@ -5,7 +5,6 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import cinema.persistance.entity.Movie;
+import cinema.persistence.entity.Movie;
 import cinema.service.IMovieService;
 
 
@@ -36,7 +35,7 @@ public class MovieController {
 	@GetMapping(value="/{id}")
 	@ResponseBody
 	public Optional<Movie> singleMovie(@PathVariable("id") Integer id) {
-		return movieService.getMovieById(id);
+		return movieService.getSingleMovieById(id);
 	}
 
 	@GetMapping(value="/byTitle")
@@ -60,7 +59,7 @@ public class MovieController {
 	@GetMapping("/findByDirector")
 	@ResponseBody
 	public Set<Movie> movieByDirectore(@RequestParam("d") int idDirector) {	
-		return movieService.getMoviesByDirector(idDirector);
+		return movieService.getMovieByDirector(idDirector);
 	}
 
 	@GetMapping("/findByActor")
@@ -79,29 +78,59 @@ public class MovieController {
 	}
 
 	
-	@PutMapping("/modify")
-	public @ResponseBody Optional<Movie> mofiyMovie(@RequestBody Movie movie) {
-		return movieService.modifyMovie(movie);
-	}
+//	@PutMapping("/modify")
+//	public @ResponseBody Optional<Movie> mofiyMovie(@RequestBody Movie movie) {
+//		var optMovie = movieService.findById(movie.getId());
+//		
+//		optMovie.ifPresent(m -> {
+//			m.setTitle(movie.getTitle());
+//			m.setYear(movie.getYear());
+//			m.setDuration(movie.getDuration());
+//			m.setDirector(movie.getDirector());
+//		});	
+//		movieService.flush();
+//		return optMovie;
+//	}
 		
-	@PutMapping("/addActor")
-	public Optional<Movie> addActorToMovie(@RequestParam("m") int movieId, @RequestParam("a") int actorId) {		
-		return movieService.addActorToMovie(movieId, actorId);
-	}
-	
-	@PutMapping("/addDirector")
-	public Optional<Movie> addDirectorToMovie(@RequestParam("m") int movieId, @RequestParam("d") int directorId) {
-		return movieService.addDirectorToMovie(movieId, directorId);
-	}
-	
-	/**
-	 * Delete
-	 */
-
-	@DeleteMapping("/{id}")
-	@ResponseBody
-	public Optional<Movie> deleteMovie(@PathVariable("id") int id_movie) {
-		return movieService.deleteMovie(id_movie);
-	}
-
+		
+	//	
+	//	@PutMapping("/addActor")
+	//	public Optional<Movie> addActorToMovie(@RequestParam("m") int movieId, @RequestParam("a") int actorId) {
+	//		//alita #4/ actor #12
+	//		var movieOpt = movieService.findById(movieId);
+	//		var actorOpt = personRepository.findById(actorId);
+	//		
+	//		if (movieOpt.isPresent() && actorOpt.isPresent()) {
+	//			movieOpt.get().getActors().add(actorOpt.get());
+	//			movieService.flush();
+	//		}
+	//		
+	//		return movieOpt;
+	//	}
+	//
+	//	@PutMapping("/addDirector")
+	//	public Optional<Movie> addDirectorToMovie(@RequestParam("m") int movieId, @RequestParam("d") int directorId) {
+	//		var movieOpt = movieService.findById(movieId);
+	//		var directorOpt = personRepository.findById(directorId);
+	//		
+	//		if (movieOpt.isPresent() && directorOpt.isPresent() ) {
+	//			movieOpt.get().setDirector(directorOpt.get());
+	//			movieService.flush();
+	//		}
+	//		return movieOpt;
+	//	}
+	//	
+	//	
+	//	@DeleteMapping("/{id}")
+	//	@ResponseBody
+	//	public Optional<Movie> deleteMovie(@PathVariable("id") int id) {
+	//		var delMovie = movieService.findById(id);
+	//		delMovie.ifPresent(m -> {
+	//			movieRepository.delete(m);
+	//			movieRepository.flush();
+	//		});
+	//		return delMovie;
+	//	}
+	//	
+	//	
 }

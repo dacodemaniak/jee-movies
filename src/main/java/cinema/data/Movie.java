@@ -132,9 +132,3 @@ public class Movie {
 		
 }
 
-	
-	
-//	@Override 
-//	public final Class<?> getClass() {  //impossible de changer le type car on mis "final"
-//	}
-
