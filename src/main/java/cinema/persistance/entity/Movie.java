@@ -24,7 +24,7 @@ public class Movie {
 	private String originalTitle;
 	private Integer year;
 	private Integer duration; //Integer peut être nulle car c'est une référence a un objet et non int qui est primitif
-	private List<String> genres;
+//	private List<String> genres;
 	private Float rating;
 	private Classification clasification;
 	private String synopsis;
@@ -77,7 +77,7 @@ public class Movie {
 		this.originalTitle = originalTitle;
 		this.year = year;
 		this.duration = duration;
-		this.genres = new ArrayList<>();
+//		this.genres = new ArrayList<>();
 		this.rating = rating;
 		this.synopsis = synopsis;
 		this.director = director;
@@ -131,14 +131,14 @@ public class Movie {
 		this.duration = duration;
 	}
 	
-	@Column(name = "genres", nullable = true)
-	public List<String> getGenres() {
-		return genres;
-	}
-
-	public void setGenres(List<String> genres) {
-		this.genres = genres;
-	}
+//	@Column(name = "genres", nullable = true)
+//	public List<String> getGenres() {
+//		return genres;
+//	}
+//
+//	public void setGenres(List<String> genres) {
+//		this.genres = genres;
+//	}
 
 	@ManyToOne
 	@JoinColumn(name="id_director",nullable=true)

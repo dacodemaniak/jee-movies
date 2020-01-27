@@ -44,11 +44,11 @@ public class PersonController {
 		return personService.getPersonByYear(year);
 	}
 	
-	@GetMapping("/findByActor")
-	@ResponseBody
-	public Set<Person> findActors(@RequestParam("a") int idPerson) {		
-		return personService.getActorsByIdPerson(idPerson);
-	}
+//	@GetMapping("/findByActor")
+//	@ResponseBody
+//	public Set<Person> findActors(@RequestParam("a") int idPerson) {		
+//		return personService.getActorsByIdPerson(idPerson);
+//	}
 	
 	@PostMapping("/addNewPerson")
 	@ResponseBody

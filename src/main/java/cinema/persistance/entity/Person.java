@@ -19,7 +19,7 @@ public class Person {
 	private Integer idPerson;
 	private String name;
 	private LocalDate birthdate;
-	private List<String> nationalities;
+	private	List<String> nationalities;
 	private String biography;
 	
 	public Person() {
@@ -79,7 +79,7 @@ public class Person {
 		this.birthdate = birthdate;
 	}
 	
-	@Column(name = "nationalities")
+	@Column(name = "nationalities", length = 255)
 	public List<String> getNationalities() {
 		return nationalities;
 	}
@@ -88,7 +88,7 @@ public class Person {
 		this.nationalities = nationalities;
 	}
 
-	@Column(name = "biography", nullable = true)
+	@Column(name = "biography", nullable = true, length = 65535)
 	public String getBiography() {
 		return biography;
 	}

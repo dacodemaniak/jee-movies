@@ -1,6 +1,9 @@
 package cinema.persistence.entity.test;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 
@@ -44,5 +47,21 @@ public class TestPerson {
 	void testGetByName() {
 		var person = repoPerson.findByName("Christopher Nolan");
 		System.out.println(person);
+	}
+	
+	@Rollback(false)
+	@Test
+	void addNationalities() {
+		var person = repoPerson.findById(9).stream().findFirst().get();
+		var am = "American";
+		var br = "Britannique";
+		person.setNationalities(List.of(am, br));
+		repoPerson.flush();
+		
+
+		
+		System.out.println(person);
+		
+				
 	}
 }
