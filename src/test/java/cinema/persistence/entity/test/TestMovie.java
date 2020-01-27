@@ -167,6 +167,7 @@ class TestMovie {
 		var armeFatale = new Movie("L'Arme Fatale",1987);
 		var movies = List.of(roiLion,madMax,armeFatale);
 		movies.forEach(entityManager::persist);
+		
 		var melGibson = new Person ("Mel Gibson");
 		var whoopi = new Person ("Whoopi Golberg");
 		var danny = new Person("Danny Glover");
@@ -185,11 +186,16 @@ class TestMovie {
 		() -> assertTrue(movieWithMe1.contains(armeFatale)),
 		() -> assertFalse(movieWithMe1.contains(roiLion))
 		);
-		System.out.println(movieWithMe1);
-		
-		
-		
-		
+		System.out.println(movieWithMe1);		
 	}
+	
+	
+//	@Test
+//	void testAddGendre() {
+//		var movie = repoMovie.findById(1).stream().findFirst().get();
+//		var genders = List.of("drama", "action");
+//		genders.forEach(entityManager::persist);
+//		movie.getGenres().addAll(genders);
+//	}
 
 }

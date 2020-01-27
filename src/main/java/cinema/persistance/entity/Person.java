@@ -79,7 +79,6 @@ public class Person {
 		this.birthdate = birthdate;
 	}
 	
-	@ElementCollection
 	public List<String> getNationalities() {
 		return nationalities;
 	}

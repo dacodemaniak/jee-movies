@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,7 +26,7 @@ public class Movie {
 	private String originalTitle;
 	private Integer year;
 	private Integer duration; //Integer peut être nulle car c'est une référence a un objet et non int qui est primitif
-	private List<String> genres;
+	private List<Gendre> genres;
 	private Float rating;
 	private Classification clasification;
 	private String synopsis;
@@ -78,7 +79,7 @@ public class Movie {
 		this.originalTitle = originalTitle;
 		this.year = year;
 		this.duration = duration;
-//		this.genres = new ArrayList<>();
+		this.genres = new ArrayList<>();
 		this.rating = rating;
 		this.synopsis = synopsis;
 		this.director = director;
@@ -132,13 +133,18 @@ public class Movie {
 		this.duration = duration;
 	}
 	
-	@ElementCollection
-	@Column(name = "genres", nullable = true)
-	public List<String> getGenres() {
+	@OneToMany
+	@JoinTable(name = "gendre",
+		joinColumns=
+	        @JoinColumn(name="id_movie"),
+	        inverseJoinColumns=
+	        @JoinColumn(name="id_gendre")
+	)
+	public List<Gendre> getGenres() {
 		return genres;
 	}
 
-	public void setGenres(List<String> genres) {
+	public void setGenres(List<Gendre> genres) {
 		this.genres = genres;
 	}
 
