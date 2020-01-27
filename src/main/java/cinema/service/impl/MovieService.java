@@ -57,9 +57,28 @@ public class MovieService implements IMovieService {
 		// TODO Auto-generated method stub
 		return movieRepository.findByActorsIdPerson(idActor);
 	}
-<<<<<<< HEAD
-	
-=======
->>>>>>> b7e5b4e044e1f374c2661382eb9c87b0116e9b42
 
+	@Override
+	public Set<Movie> getMovieByTitle(String title) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Movie> getMovieByYear(int year) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Movie> getMovieByYearBetween(int year, int year_end) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Movie addMovie(Movie movie) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
