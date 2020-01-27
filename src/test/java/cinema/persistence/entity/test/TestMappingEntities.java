@@ -7,8 +7,6 @@ package cinema.persistence.entity.test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -49,8 +47,6 @@ class TestMappingEntities {
 			var persons= List.of(joaq,gege,todd,clint,brad,gene,morgan);
 			persons.forEach(repoPersons::save);
 			
-			
-		
 			var joker = new Movie("Joker", 2019, 165, todd);			 
 			var parasite = new Movie("Parasite", 2019, 132);		 		 
 			var interstellar = new Movie("interstellar", 2014);				 
@@ -65,7 +61,7 @@ class TestMappingEntities {
 			var AInfinity = new Movie("Avengers: Infinity War", 2018, 149);
 			var nightof = new Movie("Night of the Day of the Dawn of the Son of the Bride of the Return of the Revenge of the Terror of the Attack of the Evil, Mutant, Hellbound, Flesh-Eating Subhumanoid Zombified Living Dead, Part 3", 2005);
 					  	
-			var movies = List.of(joker,parasite,interstellar,GT,impitoyable,AS,VBT,Avengers,AEndgame);
+			var movies = List.of(joker,parasite,interstellar,GT,impitoyable,AS,VBT,Avengers,AEndgame,CaptainM,AUltron,AInfinity,nightof);
 			movies.forEach(repoMovies::save);
 	}
 

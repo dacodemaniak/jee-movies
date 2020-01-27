@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +25,7 @@ public class Movie {
 	private String originalTitle;
 	private Integer year;
 	private Integer duration; //Integer peut être nulle car c'est une référence a un objet et non int qui est primitif
-//	private List<String> genres;
+	private List<String> genres;
 	private Float rating;
 	private Classification clasification;
 	private String synopsis;
@@ -131,14 +132,15 @@ public class Movie {
 		this.duration = duration;
 	}
 	
-//	@Column(name = "genres", nullable = true)
-//	public List<String> getGenres() {
-//		return genres;
-//	}
-//
-//	public void setGenres(List<String> genres) {
-//		this.genres = genres;
-//	}
+	@ElementCollection
+	@Column(name = "genres", nullable = true)
+	public List<String> getGenres() {
+		return genres;
+	}
+
+	public void setGenres(List<String> genres) {
+		this.genres = genres;
+	}
 
 	@ManyToOne
 	@JoinColumn(name="id_director",nullable=true)

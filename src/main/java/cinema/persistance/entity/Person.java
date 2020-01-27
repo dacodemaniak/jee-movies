@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -47,7 +47,7 @@ public class Person {
 		this.idPerson = idPerson;
 		this.name = name;
 		this.birthdate = birthdate;
-		this.nationalities =  new ArrayList<>();
+		this.nationalities =  new ArrayList<String>();
 		this.biography = biography;
 	}
 
@@ -79,7 +79,7 @@ public class Person {
 		this.birthdate = birthdate;
 	}
 	
-	@Column(name = "nationalities", length = 255)
+	@ElementCollection
 	public List<String> getNationalities() {
 		return nationalities;
 	}
