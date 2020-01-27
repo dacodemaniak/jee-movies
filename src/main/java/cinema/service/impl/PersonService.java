@@ -21,25 +21,21 @@ public class PersonService implements IPersonService{
 
 	@Override
 	public List<Person> getAllPersons() {
-		// TODO Auto-generated method stub
 		return personRepository.findAll();
 	}
 
 	@Override
 	public Optional<Person> getPersonById(int id) {
-		// TODO Auto-generated method stub
 		return personRepository.findById(id);
 	}
 
 	@Override
 	public Set<Person> getPersonByYear(int year) {
-		// TODO Auto-generated method stub
 		return personRepository.findByBirthDateYear(year);
 	}
 
 	@Override
 	public Set<Person> getPersonByName(String name) {
-		// TODO Auto-generated method stub
 		return personRepository.findByName(name);
 	}
 

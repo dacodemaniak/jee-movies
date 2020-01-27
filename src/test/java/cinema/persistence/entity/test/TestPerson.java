@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.annotation.Rollback;
 
 import cinema.persistance.entity.Person;
 import cinema.persistance.repository.PersonRepository;
@@ -31,10 +32,17 @@ public class TestPerson {
 		System.out.println(person);
 	}
 	
+	@Rollback(false)
 	@Test
 	void testSave2() {
 		Person person = new Person ("Joss Whedon", LocalDate.of(1964, 6, 23));
 		repoPerson.save(person);
+		System.out.println(person);
+	}
+	
+	@Test
+	void testGetByName() {
+		var person = repoPerson.findByName("Christopher Nolan");
 		System.out.println(person);
 	}
 }
