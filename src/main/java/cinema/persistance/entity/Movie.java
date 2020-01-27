@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,8 +13,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
 @Entity
 @Table(name = "movies")
@@ -55,6 +52,10 @@ public class Movie {
 	
 	public Movie(String title, int year, int duration) {
 		this(null, title, year, duration, null, null, null);
+	}
+	
+	public Movie(String title, int year, int duration, Person director) {
+		this(null, title, year, duration, null, null, director);
 	}
 	
 	public Movie(String title, String originalTitle, int year, int duration) {
@@ -163,15 +164,9 @@ public class Movie {
 		return clasification;
 	}
 
-
-
-	
 	public void setClasification(Classification clasification) {
 		this.clasification = clasification;
 	}
-	
-
-
 
 	@Column(name = "resume", nullable = true, length = 65535)
 	public String getSynopsis() {
