@@ -53,14 +53,20 @@ public class TestPerson {
 	@Test
 	void addNationalities() {
 		var person = repoPerson.findById(9);
-//		var nat = List.of("Britannique","American");		
-//		person.get().getNationalities().addAll(nat);
-//		repoPerson.flush();
-		
-
+		var nat = List.of("Britannique","American");		
+		person.get().getNationalities().addAll(nat);
+		repoPerson.flush();
 		
 		System.out.println(person.get().getNationalities());
-		
 				
 	}
+	
+	@Rollback(false)
+	@Test
+	void addNationalities2() {
+		var person = repoPerson.findById(5);
+		var nat = "American";		
+		person.get().getNationalities().add(nat);
+		repoPerson.flush();
+	}	
 }
