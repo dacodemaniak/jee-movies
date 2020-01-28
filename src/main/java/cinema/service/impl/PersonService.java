@@ -43,12 +43,7 @@ public class PersonService implements IPersonService{
 	public Set<Person> getPersonByNationality(String nationality) {
 		return personRepository.findByNationalitiesIgnoreCase(nationality);
 	}
-
-//	@Override
-//	public Set<Person> getActorsByIdPerson(int idPerson) {
-//		return personRepository.findActorsByidPerson(idPerson);
-//	}
-
+	
 	@Override
 	public Person addNewPerson(Person newPerson) {
 		return personRepository.save(newPerson);
