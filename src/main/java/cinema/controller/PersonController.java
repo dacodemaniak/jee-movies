@@ -44,16 +44,16 @@ public class PersonController {
 		return personService.getPersonByYear(year);
 	}
 	
-//	@GetMapping("/findByActor")
-//	@ResponseBody
-//	public Set<Person> findActors(@RequestParam("a") int idPerson) {		
-//		return personService.getActorsByIdPerson(idPerson);
-//	}
-	
 	@PostMapping("/addNewPerson")
 	@ResponseBody
 	public Person addNewPerson(@RequestBody Person newPerson) {
 		return personService.addNewPerson(newPerson);
+	}
+	
+	@PostMapping("/findByNationality")
+	@ResponseBody
+	public Set<Person> getPersonByNationality(@RequestParam("n") String nationality) {
+		return personService.getPersonByNationality(nationality);
 	}
 	
 }

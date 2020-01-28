@@ -17,6 +17,8 @@ public interface IMovieService {
 	Set<Movie> getMovieByTitle(String title);
 	Set<Movie> getMovieByYear(int year);
 	Set<Movie> getMovieByYearBetween(int year, int year_end);
+	Set<Movie> getMovieByGenres(String genres);
+	
 	Movie addMovie(Movie movie);
 	Optional<Movie> modifyMovie(Movie movie);
 	Optional<Movie> addActorToMovie(int id_movie, int id_actor);

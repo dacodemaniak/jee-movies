@@ -38,6 +38,11 @@ public class PersonService implements IPersonService{
 	public Set<Person> getPersonByName(String name) {
 		return personRepository.findByName(name);
 	}
+	
+	@Override
+	public Set<Person> getPersonByNationality(String nationality) {
+		return personRepository.findByNationalitiesIgnoreCase(nationality);
+	}
 
 //	@Override
 //	public Set<Person> getActorsByIdPerson(int idPerson) {

@@ -1,5 +1,6 @@
 package cinema.controller;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -67,6 +68,12 @@ public class MovieController {
 	@ResponseBody
 	public Set<Movie> movieByActor(@RequestParam("a") int idActor) {		
 		return movieService.getMovieByActor(idActor);
+	}
+	
+	@GetMapping("/findByGenres")
+	@ResponseBody
+	public Set<Movie> movieByGenre(@RequestParam("g") String genre) {
+		return movieService.getMovieByGenres(genre);
 	}
 	
 	/**

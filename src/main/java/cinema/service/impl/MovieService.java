@@ -77,6 +77,11 @@ public class MovieService implements IMovieService {
 	}
 
 	@Override
+	public Set<Movie> getMovieByGenres(String genres) {
+		return movieRepository.findByGenresIgnoreCase(genres);
+	}
+
+	@Override
 	public Movie addMovie(Movie movie) {
 		// TODO Auto-generated method stub
 		return movieRepository.save(movie);

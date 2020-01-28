@@ -13,6 +13,8 @@ public interface PersonRepository extends JpaRepository<Person, Integer> {
 //	Set<Person> findByIdActors(int idActors);
 //	Set<Person> findActorsByidPerson(int idPerson);
 	
+	Set<Person> findByNationalitiesIgnoreCase(String nationality);
+	
 	@Query("select p from Person p where extract(year from p.birthdate) = ?1")
 	Set<Person> findByBirthDateYear(int year);
 

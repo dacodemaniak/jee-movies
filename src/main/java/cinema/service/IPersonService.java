@@ -11,6 +11,7 @@ public interface IPersonService {
 	Optional<Person> getPersonById(int id);     
 	Set<Person> getPersonByYear(int year);     
 	Set<Person> getPersonByName(String name);
+	Set<Person> getPersonByNationality(String nationality);
 //	Set<Person> getActorsByIdPerson(int idPerson);
 	Person addNewPerson(Person newPerson);
 	     
