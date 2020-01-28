@@ -113,6 +113,25 @@ class TestCinema {
 	}
 
 	
+	@Rollback(false)
+	@Test
+	void scenarioMovieAddActor2() {
+		var mule = repoMovies.findByTitle("La Mule").stream().findFirst().get();
+		var Brad = repoPersons.findByName("Clint EastWood").stream().findFirst().get();
+		mule.getActors().add(Brad);
+		repoMovies.flush();
+	}	
+	
+	
+	@Rollback(false)
+	@Test
+	void scenarioMovieAddActor3() {
+		var avengers = repoMovies.findByTitle("Avengers: Endgame").stream().findFirst().get();
+		var robert = repoPersons.findByName("Robert Downey Jr").stream().findFirst().get();
+		avengers.getActors().add(robert);
+		repoMovies.flush();
+	}
+	
 //	@Test
 //	void scenarioSelectByDirector() {
 //		var data1 = repoMovies.findByDirectorNameEndingWith("Eastwood");
