@@ -55,12 +55,17 @@ public class TestPerson {
 		var person = repoPerson.findById(9);		
 		System.out.println(person.get().getNationalities());				
 
-		var person = repoPerson.findById(9);
-		var nat = List.of("Britannique","American");		
-		person.get().getNationalities().addAll(nat);
+		var nat = List.of("Britannique","American");	
+		
+		person.get().getNationalities().addAll(ArrayList("Britannique","American"));
 		repoPerson.flush();
 		
 		System.out.println(person.get().getNationalities());
 				
+	}
+
+	private Collection<? extends String> ArrayList(String string, String string2) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

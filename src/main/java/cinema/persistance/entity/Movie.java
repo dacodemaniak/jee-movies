@@ -3,6 +3,7 @@ package cinema.persistance.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -26,7 +27,7 @@ public class Movie {
 	private String originalTitle;
 	private Integer year;
 	private Integer duration; //Integer peut être nulle car c'est une référence a un objet et non int qui est primitif
-	private List<Gendre> genres;
+	private List<String> genres;
 	private Float rating;
 	private Classification clasification;
 	private String synopsis;
@@ -134,17 +135,15 @@ public class Movie {
 	}
 	
 	@OneToMany
-	@JoinTable(name = "gendre",
+	@CollectionTable(name = "genres",
 		joinColumns=
-	        @JoinColumn(name="id_movie"),
-	        inverseJoinColumns=
-	        @JoinColumn(name="id_gendre")
+	        @JoinColumn(name="id_movie")
 	)
-	public List<Gendre> getGenres() {
+	public List<String> getGenres() {
 		return genres;
 	}
 
-	public void setGenres(List<Gendre> genres) {
+	public void setGenres(List<String> genres) {
 		this.genres = genres;
 	}
 
