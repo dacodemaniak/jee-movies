@@ -134,7 +134,7 @@ public class Movie {
 		this.duration = duration;
 	}
 	
-	@OneToMany
+	@ElementCollection
 	@CollectionTable(name = "genres",
 		joinColumns=
 	        @JoinColumn(name="id_movie")
@@ -193,7 +193,6 @@ public class Movie {
 		this.format = format;
 	}
 	
-
 	@ManyToMany //(fetch = FetchType.EAGER)
 	@JoinTable(name="act",
     joinColumns=

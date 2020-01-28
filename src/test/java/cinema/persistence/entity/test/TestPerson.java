@@ -52,16 +52,14 @@ public class TestPerson {
 	@Rollback(false)
 	@Test
 	void addNationalities() {
-		var person = repoPerson.findById(9);		
+		var person = repoPerson.findById(1);		
 		System.out.println(person.get().getNationalities());				
-
-		var nat = List.of("Britannique","American");	
+		var nat = List.of("American");
 		
-		person.get().getNationalities().addAll(ArrayList("Britannique","American"));
-		repoPerson.flush();
-		
-		System.out.println(person.get().getNationalities());
-				
+		if(person.isPresent()) {
+			person.get().getNationalities().addAll(nat);
+			repoPerson.flush();
+		}
 	}
 
 	private Collection<? extends String> ArrayList(String string, String string2) {

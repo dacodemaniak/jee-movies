@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.annotation.Rollback;
 
 import cinema.persistance.entity.Movie;
 import cinema.persistance.entity.Person;
@@ -189,13 +190,17 @@ class TestMovie {
 		System.out.println(movieWithMe1);		
 	}
 	
-	
-//	@Test
-//	void testAddGendre() {
-//		var movie = repoMovie.findById(1).stream().findFirst().get();
-//		var genders = List.of("drama", "action");
-//		genders.forEach(entityManager::persist);
-//		movie.getGenres().addAll(genders);
-//	}
+	@Rollback(false)
+	@Test
+	void testAddGendre() {
+		var movie = repoMovie.findById(1);
+		var genders = List.of("Drama", "Crime", "Thriller");
+		
+		if(movie.isPresent()) {
+			movie.get().getGenres().addAll(genders);
+			repoMovie.flush();
+		}
+		System.out.println(movie + " movie genre :" + movie.get().getGenres());
+	}
 
 }
