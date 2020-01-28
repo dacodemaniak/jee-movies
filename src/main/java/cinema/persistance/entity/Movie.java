@@ -39,32 +39,32 @@ public class Movie {
 	private List<Person> actors;
 
 	public Movie() {
-		super();
-	}
-	
-	public Movie(String title, int year) {
-		this(null, title, year, null, null, null, null);
-	}
-	
-	public Movie(String title, int year, int duration) {
-		this(null, title, year, duration, null, null, null);
-	}
-	
-	public Movie(String title, int year, int duration, Person director) {
-		this(null, title, year, duration, null, null, director);
-	}
-	
-	public Movie(String title, String originalTitle, int year, int duration) {
-		this(null, title, originalTitle, year, duration, null, null, null, null);
-	}
-	
-	public Movie(String title, String originalTitle, Integer year, String synopsis, String format, Person director) {
-		this(null, title, originalTitle, year, null, null, synopsis, format, director);
-	}
+        super();
+    }
+    
+    public Movie(String title, int year) {
+        this(null, title, "", null , year, null, null, "", null );
+    }
+    
+    public Movie(String title, Integer duration, Integer year) {
+        this(null, title, "", duration , year, null, null, "", null );
+    }
+    
+    public Movie(String title, int year, int duration, Person director) {
+        this(null, title, "", duration , year, null, null, "", director );
+    }
+    
+    public Movie(String title, String originalTitle, int year, int duration) {
+        this(null, title, originalTitle, year, duration, null, null, "", null );
+    }
+    
+    public Movie(String title, String originalTitle, Integer year, String synopsis, String format, Person director) {
+        this(null, title, originalTitle, year, null, null, synopsis, format, director );
+    }
 
-	public Movie(String title, String originalTitle, Integer year, Integer duration, String synopsis, String format, Person director) {
-		this(null, title, originalTitle, year, duration, null, synopsis, format, director);
-	}
+    public Movie(String title, String originalTitle, Integer year, Integer duration, String synopsis, String format, Person director) {
+        this(null, title, originalTitle, year, duration, null, synopsis, format, director );
+    }
 
 	public Movie(Integer idMovie, String title, String originalTitle, Integer year, Integer duration, Float rating, String synopsis, String format, Person director) {
 		super();
