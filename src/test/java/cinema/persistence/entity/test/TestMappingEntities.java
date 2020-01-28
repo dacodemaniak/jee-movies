@@ -33,7 +33,7 @@ class TestMappingEntities {
 	MovieRepository repoMovies;
 	
 	
-	@Rollback(false)
+//	@Rollback(false)
 	@Test
 	void testSaveData() {
 			var joaq = new Person("Joaquin Phoenix", LocalDate.of(1974, 10, 28));	
@@ -63,6 +63,13 @@ class TestMappingEntities {
 					  	
 			var movies = List.of(joker,parasite,interstellar,GT,impitoyable,AS,VBT,Avengers,AEndgame,CaptainM,AUltron,AInfinity,nightof);
 			movies.forEach(repoMovies::save);
+	}
+	
+	@Rollback(false)
+	@Test
+	void testNewMovie() {
+		var movie = new Movie("Joker 2020", 2020);
+		repoMovies.saveAndFlush(movie);
 	}
 
 }

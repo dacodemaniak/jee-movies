@@ -202,5 +202,12 @@ class TestMovie {
 		}
 		System.out.println(movie + " movie genre :" + movie.get().getGenres());
 	}
+	
+	@Rollback(false)
+	@Test
+	void testAddNewMovie() {
+		var movie = new Movie("Joker 2020", 202, 2021);		
+		repoMovie.save(movie);
+	}
 
 }
