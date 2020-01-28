@@ -43,19 +43,19 @@ public class Movie {
     }
     
     public Movie(String title, int year) {
-        this(null, title, "", null , year, null, null, "", null );
+        this(null, title, null, null , year, null, null, "", null );
     }
     
     public Movie(String title, Integer duration, Integer year) {
-        this(null, title, "", duration , year, null, null, "", null );
+        this(null, title, null, duration , year, null, null, null, null );
     }
     
     public Movie(String title, int year, int duration, Person director) {
-        this(null, title, "", duration , year, null, null, "", director );
+        this(null, title, null, duration , year, null, null, null, director );
     }
     
     public Movie(String title, String originalTitle, int year, int duration) {
-        this(null, title, originalTitle, year, duration, null, null, "", null );
+        this(null, title, originalTitle, year, duration, null, null, null, null );
     }
     
     public Movie(String title, String originalTitle, Integer year, String synopsis, String format, Person director) {
