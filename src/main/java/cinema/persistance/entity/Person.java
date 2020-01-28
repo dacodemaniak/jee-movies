@@ -13,17 +13,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 
 @Entity
 @Table (name = "persons")
+@SecondaryTable(name = "act")
 public class Person {
-
 	private Integer idPerson;
 	private String name;
 	private LocalDate birthdate;
 	private	List<String> nationalities;
 	private String biography;
+	private String role;
 	
 	public Person() {
 		super();
@@ -42,7 +44,7 @@ public class Person {
 	}
 	
 	public Person(String name, LocalDate birthdate,List<String> nationalities) {
-		this(null, name, birthdate, nationalities,null);
+		this(null, name, birthdate, nationalities, null);
 	}
 
 	public Person(Integer idPerson, String name, LocalDate birthdate, List<String> nationalities, String biography) {
@@ -102,6 +104,14 @@ public class Person {
 
 	public void setBiography(String biography) {
 		this.biography = biography;
+	}
+	
+	@Column(table = "act")
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	@Override

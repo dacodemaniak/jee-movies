@@ -15,6 +15,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
 import cinema.persistance.entity.Person;
+import cinema.persistance.repository.MovieRepository;
 import cinema.persistance.repository.PersonRepository;
 
 @DataJpaTest
@@ -23,6 +24,9 @@ public class TestPerson {
 
 	@Autowired
 	PersonRepository repoPerson; //interface qui permet de créer une class 
+	
+	@Autowired
+	MovieRepository repoMovie; //interface qui permet de créer une class 
 	
 	@Autowired
 	EntityManager entityManager;
@@ -49,7 +53,7 @@ public class TestPerson {
 		System.out.println(person);
 	}
 	
-	@Rollback(false)
+//	@Rollback(false)
 	@Test
 	void addNationalities() {
 		var person = repoPerson.findById(1);		
@@ -62,8 +66,4 @@ public class TestPerson {
 		}
 	}
 
-	private Collection<? extends String> ArrayList(String string, String string2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

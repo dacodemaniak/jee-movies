@@ -14,8 +14,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Target;
 
 @Entity
 @Table(name = "movies")
@@ -34,16 +37,6 @@ public class Movie {
 	private Person director;
 	private String format;
 	private List<Person> actors;
-	
-	
-	
-//	public Movie(String title, Integer year) {
-//		this(title, year, null);
-//	}
-
-//	public Movie(String title, Integer year, Integer duration) {
-//		this(null, title, year, duration,null);
-//	}
 
 	public Movie() {
 		super();
@@ -193,12 +186,12 @@ public class Movie {
 		this.format = format;
 	}
 	
-	@ManyToMany //(fetch = FetchType.EAGER)
+	@ManyToMany
 	@JoinTable(name="act",
     joinColumns=
         @JoinColumn(name="id_movie"),
     inverseJoinColumns=
-        @JoinColumn(name="id_actors")
+        @JoinColumn(name="id_actor")
     )
 	public List<Person> getActors() {
 		return actors;
