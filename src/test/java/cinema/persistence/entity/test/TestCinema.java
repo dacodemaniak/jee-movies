@@ -99,6 +99,18 @@ class TestCinema {
 		//read actors
 		var actors = impitoyable.getActors();
 	}
+	
+	@Rollback(false)
+	@Test
+	void testSaveData2() {
+			Movie mule = new Movie("La Mule",2018,116); 
+			Movie tonnerre = new Movie("Tonnerre sous les tropiques",2008,107);		 		 
+			Movie kingKong = new Movie("King Kong",2005,180);				 
+			Movie Lala = new Movie("LaLaland",2016,128);     
+			
+			var movies = List.of(mule,tonnerre,kingKong,Lala);
+			movies.forEach(repoMovies::save);
+	}
 
 	
 //	@Test

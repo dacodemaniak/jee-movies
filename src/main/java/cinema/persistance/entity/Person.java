@@ -18,14 +18,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "persons")
-@SecondaryTable(name = "act")
+//@SecondaryTable(name = "act")
 public class Person {
 	private Integer idPerson;
 	private String name;
 	private LocalDate birthdate;
 	private	List<String> nationalities;
 	private String biography;
-	private String role;
+//	private String role;
 	
 	public Person() {
 		super();
@@ -106,13 +106,13 @@ public class Person {
 		this.biography = biography;
 	}
 	
-	@Column(table = "act")
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
-	}
+//	@Column(table = "act")
+//	public String getRole() {
+//		return role;
+//	}
+//	public void setRole(String role) {
+//		this.role = role;
+//	}
 
 	@Override
 	public String toString() {
