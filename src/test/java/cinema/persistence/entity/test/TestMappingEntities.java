@@ -105,9 +105,9 @@ class TestMappingEntities {
 //		
 //		em.persist(a);
 //		
-		var movie = actorRepo.findById(21).get();
-		
-		System.out.println(movie);
+//		var movie = repoMovies.findById(21).get().getActors();
+		var actor = actorRepo.findAll().stream().map(a -> a.getPerson().getIdPerson() == 21);
+		System.out.println(actor.toString());
 	}
 	
 	@Rollback(false)

@@ -14,7 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "movies")
@@ -190,7 +189,6 @@ public class Movie {
 		this.format = format;
 	}
 	
-	@Transient
 	@OneToMany(targetEntity = Actor.class, mappedBy = "person")
 	public List<Actor> getActors() {
 		return actors;

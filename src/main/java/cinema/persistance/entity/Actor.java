@@ -65,4 +65,13 @@ public class Actor {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder("Actor: "); //pour eviter de faire de + "" + ""+..etc
+		return builder.append(person.getName())
+				.append(" role: ")
+				.append(role)
+				.toString(); 
+	}
 }
