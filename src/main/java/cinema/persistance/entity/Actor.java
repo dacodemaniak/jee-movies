@@ -17,7 +17,7 @@ public class Actor {
 	
 	@ManyToOne
     	@MapsId("id_movie")
-    	@JoinColumn(name = "movie_id")
+    	@JoinColumn(name = "movie_actors")
     Movie movie;
 	
 	@ManyToOne

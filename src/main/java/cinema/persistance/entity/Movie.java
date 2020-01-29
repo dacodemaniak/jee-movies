@@ -19,6 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Target;
 
@@ -32,16 +33,12 @@ public class Movie {
 	private String originalTitle;
 	private Integer year;
 	private Integer duration; //Integer peut être nulle car c'est une référence a un objet et non int qui est primitif
-	private List<String> genres;
+	private List<String> genres = new ArrayList<>();
 	private Float rating;
 	private Classification clasification;
 	private String synopsis;
 	private Person director;
 	private String format;
-	
-	@JoinTable(name = "actor")
-	@JoinColumn(name = "movie_id")
-	private List<Actor> movieActors;
 
 	public Movie() {
         super();
@@ -86,12 +83,11 @@ public class Movie {
 		this.originalTitle = originalTitle;
 		this.year = year;
 		this.duration = duration;
-		this.genres = new ArrayList<>();
+		this.genres = genres;
 		this.rating = rating;
 		this.synopsis = synopsis;
 		this.director = director;
 		this.format = format;
-		this.movieActors = new ArrayList<>();
 	}
 	
 	@Id
@@ -206,6 +202,7 @@ public class Movie {
 //    inverseJoinColumns=
 //        @JoinColumn(name="id_actor")
 //    )
+	
 //	public List<Actor> getActors() {
 //		return actor;
 //	}
@@ -213,14 +210,6 @@ public class Movie {
 //	public void setActors(List<Actor> actors) {
 //		this.actor = actors;
 //	}
-	
-//	public List<Actor> getMovieActors() {
-//		return movieActors;
-//	}
-//
-//	public void setMovieActors(List<Actor> movieActors) {
-//		this.movieActors = movieActors;
-//	}	
 
 	@Override
 	public String toString() {

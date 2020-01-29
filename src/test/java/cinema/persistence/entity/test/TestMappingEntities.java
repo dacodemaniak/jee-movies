@@ -56,13 +56,6 @@ class TestMappingEntities {
 			var peter = new Person("Peter Jackson", LocalDate.of(1961,10,31),List.of("New Zealander"));
 			
 			var persons= List.of(joaq,gege,todd,clint,brad,gene,morgan,robert,naomi,emma,ryan,joss,jack,chris,peter);
-			
-			var americans = List.of(joaq, todd, brad, gene, clint, morgan, robert, emma, joss, jack, chris);
-			
-			for(var p : americans) {
-				var nat = List.of("American");
-				p.setNationalities(nat);
-			}
 			 
 			persons.forEach(repoPersons::save);
 			
