@@ -58,16 +58,16 @@ class TestCinema {
 		}
 	}
 	
-	@Rollback(false)
-	@Test
-	void testAddNewMovie() {
-		var batman = new Movie("The Dark Knight", 2008, 153);
-		repoMovies.save(batman);
-		var persons = repoPersons.findByName("Christopher Nolan");
-		var chris = persons.stream().findFirst().get();
-		batman.setDirector(chris);
-		//repoMovies.flush(); //
-	}
+//	@Rollback(false)
+//	@Test
+//	void testAddNewMovie() {
+//		var batman = new Movie("The Dark Knight", 2008, 153);
+//		repoMovies.save(batman);
+//		var persons = repoPersons.findByName("Christopher Nolan");
+//		var chris = persons.stream().findFirst().get();
+//		batman.setDirector(chris);
+//		//repoMovies.flush(); //
+//	}
 
 	
 	

@@ -2,6 +2,7 @@ package cinema.persistance.entity;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -26,9 +27,7 @@ public class Person {
 	private LocalDate birthdate;
 	private	List<String> nationalities = new ArrayList<String>();
 	private String biography;
-	
-//	@OneToMany(targetEntity = Actor.class, mappedBy = "id_person")
-//    private String role;
+	private Set<Actor> roles = new HashSet<Actor>();
 	
 	public Person() {
 		super();
@@ -109,13 +108,14 @@ public class Person {
 		this.biography = biography;
 	}
 
-//	public String getRole() {
-//		return role;
-//	}
-//
-//	public void setRole(String role) {
-//		this.role = role;
-//	}
+	@OneToMany(targetEntity = Actor.class, mappedBy = "person")
+	public Set<Actor> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Actor> roles) {
+		this.roles = roles;
+	}
 
 	@Override
 	public String toString() {

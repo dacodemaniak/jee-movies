@@ -10,6 +10,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import org.hibernate.mapping.Array;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +20,10 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
+import cinema.persistance.entity.Actor;
 import cinema.persistance.entity.Movie;
 import cinema.persistance.entity.Person;
+import cinema.persistance.repository.ActorRepository;
 import cinema.persistance.repository.MovieRepository;
 import cinema.persistance.repository.PersonRepository;
 
@@ -33,6 +37,12 @@ class TestMappingEntities {
 	
 	@Autowired
 	MovieRepository repoMovies;
+	
+	@Autowired
+	ActorRepository actorRepo;
+	
+	@Autowired
+	EntityManager em;
 	
 	
 	@Rollback(false)
@@ -81,8 +91,23 @@ class TestMappingEntities {
 	@Rollback(false)
 	@Test
 	void testAddMovie() {
-		Movie Lala = new Movie("LaLaland",2016,128,List.of("Comedy","Drama","Music"));
-		repoMovies.saveAndFlush(Lala);
+//		Movie joker = new Movie("Joker", 2019, 165);		
+//		em.persist(joker);
+//		
+//		Person brad = new Person("Bradley Cooper");	
+//		em.persist(brad);
+//		
+//		Actor a = new Actor();
+//		a.setMovie(joker);
+//		a.setPerson(brad);
+//		joker.getActors().add(a);
+//		a.setRole("TUTU");
+//		
+//		em.persist(a);
+//		
+		var movie = actorRepo.findById(21).get();
+		
+		System.out.println(movie);
 	}
 	
 	@Rollback(false)

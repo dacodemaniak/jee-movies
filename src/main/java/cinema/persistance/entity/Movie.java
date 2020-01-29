@@ -2,7 +2,6 @@ package cinema.persistance.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
@@ -12,16 +11,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-
-import org.hibernate.annotations.Target;
 
 @Entity
 @Table(name = "movies")
@@ -32,13 +25,15 @@ public class Movie {
 	private String title;
 	private String originalTitle;
 	private Integer year;
-	private Integer duration; //Integer peut être nulle car c'est une référence a un objet et non int qui est primitif
-	private List<String> genres = new ArrayList<>();
+	private Integer duration;
+	private List<String> genres = new ArrayList<String>();
 	private Float rating;
 	private Classification clasification;
 	private String synopsis;
 	private Person director;
 	private String format;
+	
+	private List<Actor> actors = new ArrayList<>();
 
 	public Movie() {
         super();
@@ -150,7 +145,7 @@ public class Movie {
 	}
 
 	@ManyToOne
-	@JoinColumn(name="id_director",nullable=true)
+	@JoinColumn(name="id_director", nullable=true)
 	public Person getDirector() {
 		return director;
 	}
@@ -195,22 +190,15 @@ public class Movie {
 		this.format = format;
 	}
 	
-//	@ManyToMany
-//	@JoinTable(name="act",
-//    joinColumns=
-//        @JoinColumn(name="id_movie"),
-//    inverseJoinColumns=
-//        @JoinColumn(name="id_actor")
-//    )
+	@Transient
+	@OneToMany(targetEntity = Actor.class, mappedBy = "person")
+	public List<Actor> getActors() {
+		return actors;
+	}
+	public void setActors(List<Actor> actors) {
+		this.actors = actors;
+	}
 	
-//	public List<Actor> getActors() {
-//		return actor;
-//	}
-//
-//	public void setActors(List<Actor> actors) {
-//		this.actor = actors;
-//	}
-
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder(title); //pour eviter de faire de + "" + ""+..etc

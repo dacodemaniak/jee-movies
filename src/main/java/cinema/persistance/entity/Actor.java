@@ -13,24 +13,20 @@ import javax.persistence.MapsId;
 public class Actor {
 
 	@EmbeddedId
-	private ActorId id;
+	private ActorIdKey pk = new ActorIdKey();
 	
 	@ManyToOne
-    	@MapsId("id_movie")
-    	@JoinColumn(name = "movie_actors")
-    Movie movie;
+    @MapsId("idMovie")
+    private Movie movie;
 	
 	@ManyToOne
-    	@MapsId("id_person")
-    	@JoinColumn(name = "person_id")
-    Person person;
+    @MapsId("idPerson")
+    private Person person;
  
     private String role;
 
-	public Actor() {
-		super();
-	}
-
+    public Actor() {}
+    
 	public Actor(Movie movie, Person person, String role) {
 		super();
 		this.movie = movie;
@@ -38,12 +34,12 @@ public class Actor {
 		this.role = role;
 	}
 
-	public ActorId getId() {
-		return id;
+	public ActorIdKey getPk() {
+		return pk;
 	}
 
-	public void setId(ActorId id) {
-		this.id = id;
+	public void setPk(ActorIdKey pk) {
+		this.pk = pk;
 	}
 
 	public Movie getMovie() {
@@ -69,5 +65,4 @@ public class Actor {
 	public void setRole(String role) {
 		this.role = role;
 	}
-    
 }
