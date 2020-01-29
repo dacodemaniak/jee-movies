@@ -2,6 +2,7 @@ package cinema.persistance.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
@@ -14,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
@@ -36,7 +38,10 @@ public class Movie {
 	private String synopsis;
 	private Person director;
 	private String format;
-	private List<Person> actors;
+	
+	@JoinTable(name = "actor")
+	@JoinColumn
+	private List<Actor> movieActors;
 
 	public Movie() {
         super();
@@ -86,7 +91,6 @@ public class Movie {
 		this.synopsis = synopsis;
 		this.director = director;
 		this.format = format;
-		this.actors = new ArrayList<>();
 	}
 	
 	@Id
@@ -194,20 +198,20 @@ public class Movie {
 		this.format = format;
 	}
 	
-	@ManyToMany
-	@JoinTable(name="act",
-    joinColumns=
-        @JoinColumn(name="id_movie"),
-    inverseJoinColumns=
-        @JoinColumn(name="id_actor")
-    )
-	public List<Person> getActors() {
-		return actors;
-	}
-
-	public void setActors(List<Person> actors) {
-		this.actors = actors;
-	}
+//	@ManyToMany
+//	@JoinTable(name="act",
+//    joinColumns=
+//        @JoinColumn(name="id_movie"),
+//    inverseJoinColumns=
+//        @JoinColumn(name="id_actor")
+//    )
+//	public List<Actor> getActors() {
+//		return actor;
+//	}
+//
+//	public void setActors(List<Actor> actors) {
+//		this.actor = actors;
+//	}
 
 	@Override
 	public String toString() {
@@ -218,7 +222,6 @@ public class Movie {
 				.append('#')
 				.append(idMovie)
 				.toString(); 
-	}
-	
+	}	
 
 }

@@ -160,35 +160,35 @@ class TestMovie {
 
 	}
 	
-	@Test
-	void testFindByActorsNameEndingWith() {
-	
-		var madMax = new Movie("Mad Max",1978);
-		var roiLion = new Movie("Le Roi Lion",1994);
-		var armeFatale = new Movie("L'Arme Fatale",1987);
-		var movies = List.of(roiLion,madMax,armeFatale);
-		movies.forEach(entityManager::persist);
-		
-		var melGibson = new Person ("Mel Gibson");
-		var whoopi = new Person ("Whoopi Golberg");
-		var danny = new Person("Danny Glover");
-		entityManager.persist(melGibson);
-		entityManager.persist(whoopi);
-		entityManager.persist(danny);
-		roiLion.getActors().add(whoopi);
-		madMax.getActors().add(melGibson);
-		Collections.addAll(armeFatale.getActors(), melGibson,danny);
-		entityManager.flush();
-		//when
-		var movieWithMe1 = repoMovie.findByActorsNameEndingWith("Gibson");
-		//then
-		assertAll(
-		() -> assertTrue(movieWithMe1.contains(madMax)),
-		() -> assertTrue(movieWithMe1.contains(armeFatale)),
-		() -> assertFalse(movieWithMe1.contains(roiLion))
-		);
-		System.out.println(movieWithMe1);		
-	}
+//	@Test
+//	void testFindByActorsNameEndingWith() {
+//	
+//		var madMax = new Movie("Mad Max",1978);
+//		var roiLion = new Movie("Le Roi Lion",1994);
+//		var armeFatale = new Movie("L'Arme Fatale",1987);
+//		var movies = List.of(roiLion,madMax,armeFatale);
+//		movies.forEach(entityManager::persist);
+//		
+//		var melGibson = new Person ("Mel Gibson");
+//		var whoopi = new Person ("Whoopi Golberg");
+//		var danny = new Person("Danny Glover");
+//		entityManager.persist(melGibson);
+//		entityManager.persist(whoopi);
+//		entityManager.persist(danny);
+//		roiLion.getActors().add(whoopi);
+//		madMax.getActors().add(melGibson);
+//		Collections.addAll(armeFatale.getActors(), melGibson,danny);
+//		entityManager.flush();
+//		//when
+//		var movieWithMe1 = repoMovie.findByActorsNameEndingWith("Gibson");
+//		//then
+//		assertAll(
+//		() -> assertTrue(movieWithMe1.contains(madMax)),
+//		() -> assertTrue(movieWithMe1.contains(armeFatale)),
+//		() -> assertFalse(movieWithMe1.contains(roiLion))
+//		);
+//		System.out.println(movieWithMe1);		
+//	}
 	
 	@Rollback(false)
 	@Test

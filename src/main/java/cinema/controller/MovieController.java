@@ -64,11 +64,11 @@ public class MovieController {
 		return movieService.getMoviesByDirector(idDirector);
 	}
 
-	@GetMapping("/findByActor")
-	@ResponseBody
-	public Set<Movie> movieByActor(@RequestParam("a") int idActor) {		
-		return movieService.getMovieByActor(idActor);
-	}
+//	@GetMapping("/findByActor")
+//	@ResponseBody
+//	public Set<Movie> movieByActor(@RequestParam("a") int idActor) {		
+//		return movieService.getMovieByActor(idActor);
+//	}
 	
 	@GetMapping("/findByGenres")
 	@ResponseBody
@@ -91,10 +91,10 @@ public class MovieController {
 		return movieService.modifyMovie(movie);
 	}
 		
-	@PutMapping("/addActor")
-	public Optional<Movie> addActorToMovie(@RequestParam("m") int movieId, @RequestParam("a") int actorId) {		
-		return movieService.addActorToMovie(movieId, actorId);
-	}
+//	@PutMapping("/addActor")
+//	public Optional<Movie> addActorToMovie(@RequestParam("m") int movieId, @RequestParam("a") int actorId) {		
+//		return movieService.addActorToMovie(movieId, actorId);
+//	}
 	
 	@PutMapping("/addDirector")
 	public Optional<Movie> addDirectorToMovie(@RequestParam("m") int movieId, @RequestParam("d") int directorId) {

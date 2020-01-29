@@ -52,11 +52,11 @@ public class MovieService implements IMovieService {
 				.orElseGet(() -> Collections.emptySet());
 	}
 
-	@Override
-	public Set<Movie> getMovieByActor(int idActor) {
-		// TODO Auto-generated method stub
-		return movieRepository.findByActorsIdPerson(idActor);
-	}
+//	@Override
+//	public Set<Movie> getMovieByActor(int idActor) {
+//		// TODO Auto-generated method stub
+//		return movieRepository.findByActorsIdPerson(idActor);
+//	}
 
 	@Override
 	public Set<Movie> getMovieByTitle(String title) {
@@ -101,17 +101,17 @@ public class MovieService implements IMovieService {
 		return optMovie;
 	}
 
-	@Override
-	public Optional<Movie> addActorToMovie(int id_movie, int id_actor) {
-		var movieOpt = movieRepository.findById(id_movie);
-		var actorOpt = personRepository.findById(id_actor);
-		
-		if (movieOpt.isPresent() && actorOpt.isPresent()) {
-			movieOpt.get().getActors().add(actorOpt.get());
-			movieRepository.flush();
-		}
-		return movieOpt;
-	}
+//	@Override
+//	public Optional<Movie> addActorToMovie(int id_movie, int id_actor) {
+//		var movieOpt = movieRepository.findById(id_movie);
+//		var actorOpt = personRepository.findById(id_actor);
+//		
+//		if (movieOpt.isPresent() && actorOpt.isPresent()) {
+//			movieOpt.get().getActors().add(actorOpt.get());
+//			movieRepository.flush();
+//		}
+//		return movieOpt;
+//	}
 
 	@Override
 	public Optional<Movie> addDirectorToMovie(int id_movie, int id_director) {

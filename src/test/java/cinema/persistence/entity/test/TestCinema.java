@@ -71,67 +71,67 @@ class TestCinema {
 
 	
 	
-	@Rollback(false)
-	@Test
-	void scenarioMovieWithDirector1 (){
-		var impitoyable = repoMovies.findByTitle("Impitoyable").stream().findFirst().get();
-		var clint = repoPersons.findByName("Clint Eastwood").stream().findFirst().get();
-		var gene = repoPersons.findByName("Gene Hackman").stream().findFirst().get();
-		impitoyable.setActors(List.of(clint,gene));
-		repoMovies.flush();
-	}
-	
-	@Rollback(false)
-	@Test
-	void scenarioMovieAddActor() {
-		var impitoyable = repoMovies.findByTitle("Impitoyable").stream().findFirst().get();
-		var morgan = repoPersons.findByName("Morgan Freeman").stream().findFirst().get();
-		impitoyable.getActors().add(morgan);
-		repoMovies.flush();
-	}	
-		
-	
-	@Rollback(false)
-	@Test
-	void testLazyActors() {
-		//read a movie : select the movie + its director
-		var impitoyable = repoMovies.findByTitle("Impitoyable").stream().findFirst().get();
-		//read actors
-		var actors = impitoyable.getActors();
-	}
-	
-	@Rollback(false)
-	@Test
-	void testSaveData2() {
-			Movie mule = new Movie("La Mule",2018,116); 
-			Movie tonnerre = new Movie("Tonnerre sous les tropiques",2008,107);		 		 
-			Movie kingKong = new Movie("King Kong",2005,180);				 
-			Movie Lala = new Movie("LaLaland",2016,128);     
-			
-			var movies = List.of(mule,tonnerre,kingKong,Lala);
-			movies.forEach(repoMovies::save);
-	}
-
-	
-	@Rollback(false)
-	@Test
-	void scenarioMovieAddActor2() {
-		var mule = repoMovies.findByTitle("La Mule").stream().findFirst().get();
-		var Brad = repoPersons.findByName("Clint EastWood").stream().findFirst().get();
-		mule.getActors().add(Brad);
-		repoMovies.flush();
-	}	
-	
-	
-	@Rollback(false)
-	@Test
-	void scenarioMovieAddActor3() {
-		var avengers = repoMovies.findByTitle("Avengers: Endgame").stream().findFirst().get();
-		var robert = repoPersons.findByName("Robert Downey Jr").stream().findFirst().get();
-		avengers.getActors().add(robert);
-		repoMovies.flush();
-	}
-	
+//	@Rollback(false)
+//	@Test
+//	void scenarioMovieWithDirector1 (){
+//		var impitoyable = repoMovies.findByTitle("Impitoyable").stream().findFirst().get();
+//		var clint = repoPersons.findByName("Clint Eastwood").stream().findFirst().get();
+//		var gene = repoPersons.findByName("Gene Hackman").stream().findFirst().get();
+//		impitoyable.setActors(List.of(clint,gene));
+//		repoMovies.flush();
+//	}
+//	
+//	@Rollback(false)
+//	@Test
+//	void scenarioMovieAddActor() {
+//		var impitoyable = repoMovies.findByTitle("Impitoyable").stream().findFirst().get();
+//		var morgan = repoPersons.findByName("Morgan Freeman").stream().findFirst().get();
+//		impitoyable.getActors().add(morgan);
+//		repoMovies.flush();
+//	}	
+//		
+//	
+//	@Rollback(false)
+//	@Test
+//	void testLazyActors() {
+//		//read a movie : select the movie + its director
+//		var impitoyable = repoMovies.findByTitle("Impitoyable").stream().findFirst().get();
+//		//read actors
+//		var actors = impitoyable.getActors();
+//	}
+//	
+//	@Rollback(false)
+//	@Test
+//	void testSaveData2() {
+//			Movie mule = new Movie("La Mule",2018,116); 
+//			Movie tonnerre = new Movie("Tonnerre sous les tropiques",2008,107);		 		 
+//			Movie kingKong = new Movie("King Kong",2005,180);				 
+//			Movie Lala = new Movie("LaLaland",2016,128);     
+//			
+//			var movies = List.of(mule,tonnerre,kingKong,Lala);
+//			movies.forEach(repoMovies::save);
+//	}
+//
+//	
+//	@Rollback(false)
+//	@Test
+//	void scenarioMovieAddActor2() {
+//		var mule = repoMovies.findByTitle("La Mule").stream().findFirst().get();
+//		var Brad = repoPersons.findByName("Clint EastWood").stream().findFirst().get();
+//		mule.getActors().add(Brad);
+//		repoMovies.flush();
+//	}	
+//	
+//	
+//	@Rollback(false)
+//	@Test
+//	void scenarioMovieAddActor3() {
+//		var avengers = repoMovies.findByTitle("Avengers: Endgame").stream().findFirst().get();
+//		var robert = repoPersons.findByName("Robert Downey Jr").stream().findFirst().get();
+//		avengers.getActors().add(robert);
+//		repoMovies.flush();
+//	}
+//	
 //	@Test
 //	void scenarioSelectByDirector() {
 //		var data1 = repoMovies.findByDirectorNameEndingWith("Eastwood");

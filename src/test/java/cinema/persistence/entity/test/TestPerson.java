@@ -65,6 +65,11 @@ public class TestPerson {
 	
 	@Rollback(false)
 	@Test
+	void testRole() {
+	}
+	
+	@Rollback(false)
+	@Test
 	void addNationalities() {
 		var person = repoPerson.findById(9);		
 		System.out.println(person.get().getNationalities());				
@@ -75,17 +80,4 @@ public class TestPerson {
 			repoPerson.flush();
 		}
 	}
-	
-	@Rollback(false)
-	@Test
-	void testSaveData4() {
-			var robert = new Person("Robert Downey Jr", LocalDate.of(1965, 4, 4));		
-			var naomi = new Person("Naomi Watts", LocalDate.of(1968, 9, 28));
-			var emma = new Person("Emma Stone", LocalDate.of(1988, 11, 6)); 	
-			var ryan = new Person("Ryan Gosling", LocalDate.of(1980, 11, 12));	
-			
-			var persons= List.of(robert,naomi,emma,ryan);
-			persons.forEach(repoPerson::save);
-	}
-	
 }

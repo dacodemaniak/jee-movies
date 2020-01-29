@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 
@@ -24,6 +26,9 @@ public class Person {
 	private LocalDate birthdate;
 	private	List<String> nationalities;
 	private String biography;
+	
+//	@OneToMany(targetEntity = Actor.class, mappedBy = "id_person")
+//    private String role;
 	
 	public Person() {
 		super();
@@ -56,7 +61,7 @@ public class Person {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idPerson")
+	@Column(name = "id_person")
 	public Integer getIdPerson() {
 		return idPerson;
 	}
@@ -103,6 +108,14 @@ public class Person {
 	public void setBiography(String biography) {
 		this.biography = biography;
 	}
+
+//	public String getRole() {
+//		return role;
+//	}
+//
+//	public void setRole(String role) {
+//		this.role = role;
+//	}
 
 	@Override
 	public String toString() {
