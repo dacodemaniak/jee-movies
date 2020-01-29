@@ -43,30 +43,38 @@ public class Movie {
     }
     
     public Movie(String title, int year) {
-        this(null, title, null, null , year, null, null, "", null );
+        this(null, title, null,year, null, null, null, null, null, null );
     }
     
-    public Movie(String title, Integer duration, Integer year) {
-        this(null, title, null, duration , year, null, null, null, null );
+    public Movie(String title, Integer year, Integer duration) {
+        this(null, title, null, year , duration, null, null, null, null, null );
     }
     
     public Movie(String title, int year, int duration, Person director) {
-        this(null, title, null, duration , year, null, null, null, director );
+        this(null, title, null, year, duration, null, null, null, null, director );
+    }
+    
+    public Movie(String title, int year, int duration, List<String> genres) {
+        this(null, title, null, year, duration, genres, null, null, null, null );
+    }
+    
+    public Movie(String title, int year, int duration, List<String> genres, Person director) {
+        this(null, title, null, year, duration, genres, null, null, null, director );
     }
     
     public Movie(String title, String originalTitle, int year, int duration) {
-        this(null, title, originalTitle, year, duration, null, null, null, null );
+        this(null, title, originalTitle, year, duration, null, null, null, null, null );
     }
     
     public Movie(String title, String originalTitle, Integer year, String synopsis, String format, Person director) {
-        this(null, title, originalTitle, year, null, null, synopsis, format, director );
+        this(null, title, originalTitle, year, null, null, null, synopsis, format, director );
     }
 
     public Movie(String title, String originalTitle, Integer year, Integer duration, String synopsis, String format, Person director) {
-        this(null, title, originalTitle, year, duration, null, synopsis, format, director );
+        this(null, title, originalTitle, year, duration, null, null, synopsis, format, director );
     }
 
-	public Movie(Integer idMovie, String title, String originalTitle, Integer year, Integer duration, Float rating, String synopsis, String format, Person director) {
+	public Movie(Integer idMovie, String title, String originalTitle, Integer year, Integer duration, List<String> genres, Float rating, String synopsis, String format, Person director) {
 		super();
 		this.idMovie = idMovie;
 		this.title = title;
