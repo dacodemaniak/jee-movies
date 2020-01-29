@@ -40,7 +40,7 @@ public class Movie {
 	private String format;
 	
 	@JoinTable(name = "actor")
-	@JoinColumn
+	@JoinColumn(name = "movie_id")
 	private List<Actor> movieActors;
 
 	public Movie() {
@@ -91,6 +91,7 @@ public class Movie {
 		this.synopsis = synopsis;
 		this.director = director;
 		this.format = format;
+		this.movieActors = new ArrayList<>();
 	}
 	
 	@Id
@@ -212,6 +213,14 @@ public class Movie {
 //	public void setActors(List<Actor> actors) {
 //		this.actor = actors;
 //	}
+	
+//	public List<Actor> getMovieActors() {
+//		return movieActors;
+//	}
+//
+//	public void setMovieActors(List<Actor> movieActors) {
+//		this.movieActors = movieActors;
+//	}	
 
 	@Override
 	public String toString() {
@@ -222,6 +231,6 @@ public class Movie {
 				.append('#')
 				.append(idMovie)
 				.toString(); 
-	}	
+	}
 
 }

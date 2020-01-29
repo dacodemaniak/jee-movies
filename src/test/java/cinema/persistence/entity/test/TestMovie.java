@@ -209,5 +209,11 @@ class TestMovie {
 		var movie = new Movie("Joker 2020", 202, 2021);		
 		repoMovie.save(movie);
 	}
+	
+//	@Test
+//	void testGetAllActors() {
+//		var movie = repoMovie.findById(1).get();	
+//		movie.getMovieActors();
+//	}
 
 }

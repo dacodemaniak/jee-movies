@@ -7,8 +7,10 @@ package cinema.persistence.entity.test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.mapping.Array;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -33,10 +35,11 @@ class TestMappingEntities {
 	MovieRepository repoMovies;
 	
 	
-//	@Rollback(false)
+	@Rollback(false)
 	@Test
 	void testSaveData() {
-			var joaq = new Person("Joaquin Phoenix", LocalDate.of(1974, 10, 28),List.of("American"));	
+			
+			var joaq = new Person("Joaquin Phoenix", LocalDate.of(1974, 10, 28), List.of("American") );	
 			var gege = new Person("Gerard Darmon", LocalDate.of(1948, 2, 29),List.of("French","Morocco"));	
 			var todd = new Person("Todd Phillips", LocalDate.of(1970, 12, 20),List.of("American"));
 			var clint = new Person("Clint Eastwood", LocalDate.of(1930, 5, 31),List.of("American")); 	
@@ -53,6 +56,14 @@ class TestMappingEntities {
 			var peter = new Person("Peter Jackson", LocalDate.of(1961,10,31),List.of("New Zealander"));
 			
 			var persons= List.of(joaq,gege,todd,clint,brad,gene,morgan,robert,naomi,emma,ryan,joss,jack,chris,peter);
+			
+			var americans = List.of(joaq, todd, brad, gene, clint, morgan, robert, emma, joss, jack, chris);
+			
+			for(var p : americans) {
+				var nat = List.of("American");
+				p.setNationalities(nat);
+			}
+			 
 			persons.forEach(repoPersons::save);
 			
 			Movie joker = new Movie("Joker", 2019, 165, List.of("Drama","Thriller"),todd);			 
