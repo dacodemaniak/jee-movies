@@ -27,65 +27,63 @@ public class Movie {
 	private String originalTitle;
 	private Integer year;
 	private Integer duration; //Integer peut être nulle car c'est une référence a un objet et non int qui est primitif
-	private List<String> genres;
+	private List<String> genres = new ArrayList<String>();
 	private Float rating;
 	private Classification clasification;
 	private String synopsis;
 	private Person director;
 	private String format;
-	private List<Person> actors;
+	private List<Person> actors = new ArrayList<Person>();
 	
 	
-	
-//	public Movie(String title, Integer year) {
-//		this(title, year, null);
-//	}
-
-//	public Movie(String title, Integer year, Integer duration) {
-//		this(null, title, year, duration,null);
-//	}
-
 	public Movie() {
-		super();
-	}
-	
-	public Movie(String title, int year) {
-		this(null, title, year, null, null, null, null);
-	}
-	
-	public Movie(String title, int year, int duration) {
-		this(null, title, year, duration, null, null, null);
-	}
-	
-	public Movie(String title, int year, int duration, Person director) {
-		this(null, title, year, duration, null, null, director);
-	}
-	
-	public Movie(String title, String originalTitle, int year, int duration) {
-		this(null, title, originalTitle, year, duration, null, null, null, null);
-	}
-	
-	public Movie(String title, String originalTitle, Integer year, String synopsis, String format, Person director) {
-		this(null, title, originalTitle, year, null, null, synopsis, format, director);
-	}
+        super();
+    }
+    
+    public Movie(String title, int year) {
+        this(null, title, null,year, null, null, null, null, null, null );
+    }
+    
+    public Movie(String title, Integer year, Integer duration) {
+        this(null, title, null, year , duration, null, null, null, null, null );
+    }
+    
+    public Movie(String title, int year, int duration, Person director) {
+        this(null, title, null, year, duration, null, null, null, null, director );
+    }
+    
+    public Movie(String title, int year, int duration, List<String> genres) {
+        this(null, title, null, year, duration, genres, null, null, null, null );
+    }
+    
+    public Movie(String title, int year, int duration, List<String> genres, Person director) {
+        this(null, title, null, year, duration, genres, null, null, null, director );
+    }
+    
+    public Movie(String title, String originalTitle, int year, int duration) {
+        this(null, title, originalTitle, year, duration, null, null, null, null, null );
+    }
+    
+    public Movie(String title, String originalTitle, Integer year, String synopsis, String format, Person director) {
+        this(null, title, originalTitle, year, null, null, null, synopsis, format, director );
+    }
 
-	public Movie(String title, String originalTitle, Integer year, Integer duration, String synopsis, String format, Person director) {
-		this(null, title, originalTitle, year, duration, null, synopsis, format, director);
-	}
+    public Movie(String title, String originalTitle, Integer year, Integer duration, String synopsis, String format, Person director) {
+        this(null, title, originalTitle, year, duration, null, null, synopsis, format, director );
+    }
 
-	public Movie(Integer idMovie, String title, String originalTitle, Integer year, Integer duration, Float rating, String synopsis, String format, Person director) {
+	public Movie(Integer idMovie, String title, String originalTitle, Integer year, Integer duration, List<String> genres, Float rating, String synopsis, String format, Person director) {
 		super();
 		this.idMovie = idMovie;
 		this.title = title;
 		this.originalTitle = originalTitle;
 		this.year = year;
 		this.duration = duration;
-		this.genres = new ArrayList<>();
+		this.genres = genres;
 		this.rating = rating;
 		this.synopsis = synopsis;
 		this.director = director;
 		this.format = format;
-		this.actors = new ArrayList<>();
 	}
 	
 	@Id
@@ -175,7 +173,7 @@ public class Movie {
 		this.clasification = clasification;
 	}
 
-	@Column(name = "resume", nullable = true, length = 65535)
+	@Column(name = "resume")
 	public String getSynopsis() {
 		return synopsis;
 	}

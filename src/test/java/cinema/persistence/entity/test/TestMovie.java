@@ -160,6 +160,7 @@ class TestMovie {
 
 	}
 	
+	@Rollback(false)
 	@Test
 	void testFindByActorsNameEndingWith() {
 	

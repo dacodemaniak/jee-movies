@@ -95,7 +95,7 @@ public class Person {
 		this.nationalities = nationalities;
 	}
 
-	@Column(name = "biography", nullable = true, length = 65535)
+	@Column(name = "biography")
 	public String getBiography() {
 		return biography;
 	}
