@@ -90,22 +90,8 @@ class TestMappingEntities {
 	
 	@Rollback(false)
 	@Test
-	void testAddMovie() {
-//		Movie joker = new Movie("Joker", 2019, 165);		
-//		em.persist(joker);
-//		
-//		Person brad = new Person("Bradley Cooper");	
-//		em.persist(brad);
-//		
-//		Actor a = new Actor();
-//		a.setMovie(joker);
-//		a.setPerson(brad);
-//		joker.getActors().add(a);
-//		a.setRole("TUTU");
-//		
-//		em.persist(a);
-//		
-//		var movie = repoMovies.findById(21).get().getActors();
+	void testAddMovie() {			
+				
 		var actor = actorRepo.findAll().stream().map(a -> a.getPerson().getIdPerson() == 21);
 		System.out.println(actor.toString());
 	}

@@ -26,7 +26,7 @@ public class Person {
 	private LocalDate birthdate;
 	private	List<String> nationalities = new ArrayList<String>();
 	private String biography;
-	private Set<Actor> roles = new HashSet<Actor>();
+	private List<Actor> roles = new ArrayList<Actor>();
 	
 	public Person() {
 		super();
@@ -108,11 +108,11 @@ public class Person {
 	}
 
 	@OneToMany(targetEntity = Actor.class, mappedBy = "person")
-	public Set<Actor> getRoles() {
+	public List<Actor> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(Set<Actor> roles) {
+	public void setRoles(List<Actor> roles) {
 		this.roles = roles;
 	}
 
