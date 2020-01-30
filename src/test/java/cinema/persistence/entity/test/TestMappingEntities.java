@@ -74,7 +74,7 @@ class TestMappingEntities {
 			Movie interstellar = new Movie("interstellar", 2014,157,List.of("Adventure","Drama","Sci-Fi"),chris);				 
 			Movie GT = new Movie("Gran Torino", 2008, 116,List.of("Drama","Thriller"),clint);     
 			Movie impitoyable = new Movie("Impitoyable", 1992, 131,List.of("Drama","Western"),clint);		 	 
-			Movie AS = new Movie("American Sniper", 2014, 133, List.of("Action",""),clint); 
+			Movie AS = new Movie("American Sniper", 2014, 133, List.of("Action","Biography","Drame"),clint); 
 			Movie VBT = new Movie("Very Bad Trip", 2009, 100,List.of("Comedy") ,todd); 	 
 			Movie Avengers = new Movie("Avengers", 2012, 145,List.of("Action","Adventure","Sci-Fi"),joss);
 			Movie AEndgame = new Movie("Avengers: Endgame", 2019, 181,List.of("Action","Adventure","Sci-Fi"));
