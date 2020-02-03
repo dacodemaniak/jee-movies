@@ -58,37 +58,39 @@ class TestCinema {
 		}
 	}
 	
-	@Rollback(false)
-	@Test
-	void testAddNewMovie() {
-		var batman = new Movie("The Dark Knight", 2008, 153);
-		repoMovies.save(batman);
-		var persons = repoPersons.findByName("Christopher Nolan");
-		var chris = persons.stream().findFirst().get();
-		batman.setDirector(chris);
-		//repoMovies.flush(); //
-	}
+//	@Rollback(false)
+//	@Test
+//	void testAddNewMovie() {
+//		var batman = new Movie("The Dark Knight", 2008, 153);
+//		repoMovies.save(batman);
+//		var persons = repoPersons.findByName("Christopher Nolan");
+//		var chris = persons.stream().findFirst().get();
+//		batman.setDirector(chris);
+//		//repoMovies.flush(); //
+//	}
 
 	
 	
-	@Rollback(false)
-	@Test
-	void scenarioMovieWithDirector1 (){
-		var impitoyable = repoMovies.findByTitle("Impitoyable").stream().findFirst().get();
-		var clint = repoPersons.findByName("Clint Eastwood").stream().findFirst().get();
-		var gene = repoPersons.findByName("Gene Hackman").stream().findFirst().get();
-		impitoyable.setActors(List.of(clint,gene));
-		repoMovies.flush();
-	}
+//	@Rollback(false)
+//	@Test
+//	void scenarioMovieWithDirector1 (){
+//		var impitoyable = repoMovies.findByTitle("Impitoyable").stream().findFirst().get();
+//		var clint = repoPersons.findByName("Clint Eastwood").stream().findFirst().get();
+//		var gene = repoPersons.findByName("Gene Hackman").stream().findFirst().get();
+//		
+//		impitoyable.getActors().add(clint);
+//		impitoyable.getActors().add(gene);
+//		repoMovies.flush();
+//	}
 	
-	@Rollback(false)
-	@Test
-	void scenarioMovieAddActor() {
-		var impitoyable = repoMovies.findByTitle("Impitoyable").stream().findFirst().get();
-		var morgan = repoPersons.findByName("Morgan Freeman").stream().findFirst().get();
-		impitoyable.getActors().add(morgan);
-		repoMovies.flush();
-	}	
+//	@Rollback(false)
+//	@Test
+//	void scenarioMovieAddActor() {
+//		var impitoyable = repoMovies.findByTitle("Impitoyable").stream().findFirst().get();
+//		var morgan = repoPersons.findByName("Morgan Freeman").stream().findFirst().get();
+//		impitoyable.getActors().add(morgan);
+//		repoMovies.flush();
+//	}	
 		
 	
 	@Rollback(false)
