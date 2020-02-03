@@ -61,14 +61,4 @@ public class PersonController {
 	public FullPerson addNewPerson(@RequestBody FullPerson newPerson) {
 		return personService.addNewPerson(newPerson);
 	}
-<<<<<<< HEAD
-	
-	@PostMapping("/findByNationality")
-	@ResponseBody
-	public Set<Person> getPersonByNationality(@RequestParam("n") String nationality) {
-		return personService.getPersonByNationality(nationality);
-	}
-	
-=======
->>>>>>> 3f14f6a69607a923a7e49f2355c81c79e574a02b
 }

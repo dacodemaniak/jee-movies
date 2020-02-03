@@ -60,16 +60,8 @@ public class PersonService implements IPersonService{
 				.map(pe -> mapper.map(pe, LightPerson.class))
 				.collect(Collectors.toSet());
 	}
-<<<<<<< HEAD
-	
-	@Override
-	public Set<Person> getPersonByNationality(String nationality) {
-		return personRepository.findByNationalitiesIgnoreCase(nationality);
-	}
-	
-=======
 
->>>>>>> 3f14f6a69607a923a7e49f2355c81c79e574a02b
+
 	@Override
 	public Optional<LightPerson> getMovieDirector(int id_movie) {
 		return movieRepository.findById(id_movie)
