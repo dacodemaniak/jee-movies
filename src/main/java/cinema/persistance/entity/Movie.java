@@ -1,7 +1,11 @@
 package cinema.persistance.entity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
@@ -11,8 +15,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.MapKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -24,16 +30,16 @@ public class Movie {
 	private String title;
 	private String originalTitle;
 	private Integer year;
-	private Integer duration;
-	private List<String> genres = new ArrayList<String>();
+	private Integer duration; //Integer peut être nulle car c'est une référence a un objet et non int qui est primitif
+	private Set<String> genres = new TreeSet<String>();
 	private Float rating;
 	private Classification clasification;
 	private String synopsis;
 	private Person director;
 	private String format;
+	private List<Person> actors = new ArrayList<>();
 	
-	private List<Actor> actors = new ArrayList<>();
-
+	
 	public Movie() {
         super();
     }
@@ -50,11 +56,11 @@ public class Movie {
         this(null, title, null, year, duration, null, null, null, null, director );
     }
     
-    public Movie(String title, int year, int duration, List<String> genres) {
+    public Movie(String title, int year, int duration, Set<String> genres) {
         this(null, title, null, year, duration, genres, null, null, null, null );
     }
     
-    public Movie(String title, int year, int duration, List<String> genres, Person director) {
+    public Movie(String title, int year, int duration, Set<String> genres, Person director) {
         this(null, title, null, year, duration, genres, null, null, null, director );
     }
     
@@ -70,7 +76,7 @@ public class Movie {
         this(null, title, originalTitle, year, duration, null, null, synopsis, format, director );
     }
 
-	public Movie(Integer idMovie, String title, String originalTitle, Integer year, Integer duration, List<String> genres, Float rating, String synopsis, String format, Person director) {
+	public Movie(Integer idMovie, String title, String originalTitle, Integer year, Integer duration, Set<String> genres, Float rating, String synopsis, String format, Person director) {
 		super();
 		this.idMovie = idMovie;
 		this.title = title;
@@ -135,16 +141,16 @@ public class Movie {
 		joinColumns=
 	        @JoinColumn(name="id_movie")
 	)
-	public List<String> getGenres() {
+	public Set<String> getGenres() {
 		return genres;
 	}
 
-	public void setGenres(List<String> genres) {
+	public void setGenres(Set<String> genres) {
 		this.genres = genres;
 	}
 
 	@ManyToOne
-	@JoinColumn(name="id_director", nullable=true)
+	@JoinColumn(name="id_director",nullable=true)
 	public Person getDirector() {
 		return director;
 	}
@@ -171,7 +177,7 @@ public class Movie {
 		this.clasification = clasification;
 	}
 
-	@Column(name = "resume", nullable = true, length = 65535)
+	@Column(name = "resume")
 	public String getSynopsis() {
 		return synopsis;
 	}
@@ -184,19 +190,30 @@ public class Movie {
 		return format;
 	}
 
-	
 	public void setFormat(String format) {
 		this.format = format;
 	}
+
+//	@ElementCollection
+//	@CollectionTable(name = "actors", joinColumns = @JoinColumn(name = "idMovie"))
+//	@MapKeyJoinColumn(name = "idPerson")
+//	@Column(name = "role")
 	
-	@OneToMany(targetEntity = Actor.class, mappedBy = "person")
-	public List<Actor> getActors() {
+	@ManyToMany //(fetch = FetchType.EAGER)
+	@JoinTable(name="act",
+    joinColumns=
+        @JoinColumn(name="id_movie"),
+    inverseJoinColumns=
+        @JoinColumn(name="id_actors")
+    )
+	public List<Person> getActors() {
 		return actors;
 	}
-	public void setActors(List<Actor> actors) {
+
+	public void setActors(List<Person> actors) {
 		this.actors = actors;
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder(title); //pour eviter de faire de + "" + ""+..etc

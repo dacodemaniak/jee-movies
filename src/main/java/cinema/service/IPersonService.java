@@ -3,15 +3,17 @@ import java.util.List;
 import java.util.Optional; 
 import java.util.Set;
 
-
+import cinema.dto.FullPerson;
+import cinema.dto.LightPerson;
 import cinema.persistance.entity.Person;  
 
 public interface IPersonService {     
-	List<Person> getAllPersons();     
-	Optional<Person> getPersonById(int id);     
-	Set<Person> getPersonByYear(int year);     
-	Set<Person> getPersonByName(String name);
-	Set<Person> getPersonByNationality(String nationality);
-	Person addNewPerson(Person newPerson);
-	     
+	List<LightPerson> getAllPersons();     
+	Optional<FullPerson> getPersonById(int id);     
+	Set<LightPerson> getPersonByYear(int year);     
+	Set<LightPerson> getPersonByName(String name);
+	Optional<LightPerson> getMovieDirector(int id_movie);
+	List<LightPerson> getMovieActors(int id_movie);
+
+	FullPerson addNewPerson(FullPerson newPerson);
 }

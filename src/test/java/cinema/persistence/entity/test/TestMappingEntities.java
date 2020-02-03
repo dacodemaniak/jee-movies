@@ -7,12 +7,9 @@ package cinema.persistence.entity.test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
-import javax.persistence.EntityManager;
-
-import org.hibernate.mapping.Array;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -20,10 +17,8 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
-import cinema.persistance.entity.Actor;
 import cinema.persistance.entity.Movie;
 import cinema.persistance.entity.Person;
-import cinema.persistance.repository.ActorRepository;
 import cinema.persistance.repository.MovieRepository;
 import cinema.persistance.repository.PersonRepository;
 
@@ -37,12 +32,6 @@ class TestMappingEntities {
 	
 	@Autowired
 	MovieRepository repoMovies;
-	
-	@Autowired
-	ActorRepository actorRepo;
-	
-	@Autowired
-	EntityManager em;
 	
 	
 	@Rollback(false)
@@ -69,41 +58,23 @@ class TestMappingEntities {
 			 
 			persons.forEach(repoPersons::save);
 			
-			Movie joker = new Movie("Joker", 2019, 165, List.of("Drama","Thriller"),todd);			 
-			Movie parasite = new Movie("Parasite", 2019, 132,List.of("Comedy","Drama","Thriller"));		 		 
-			Movie interstellar = new Movie("interstellar", 2014,157,List.of("Adventure","Drama","Sci-Fi"),chris);				 
-			Movie GT = new Movie("Gran Torino", 2008, 116,List.of("Drama","Thriller"),clint);     
-			Movie impitoyable = new Movie("Impitoyable", 1992, 131,List.of("Drama","Western"),clint);		 	 
-			Movie AS = new Movie("American Sniper", 2014, 133, List.of("Action","Biography","Drame"),clint); 
-			Movie VBT = new Movie("Very Bad Trip", 2009, 100,List.of("Comedy") ,todd); 	 
-			Movie Avengers = new Movie("Avengers", 2012, 145,List.of("Action","Adventure","Sci-Fi"),joss);
-			Movie AEndgame = new Movie("Avengers: Endgame", 2019, 181,List.of("Action","Adventure","Sci-Fi"));
-			Movie mule = new Movie("La Mule",2018,116,List.of("Crime","Drama","Thriller"),clint); 
-			Movie tonnerre = new Movie("Tonnerre sous les tropiques",2008,107,List.of("Comedy","War"));
-			Movie birdman = new Movie("BirdMan",2014,119,List.of("Comedy","Drama"));
-			Movie kingKong = new Movie("King Kong",2005,180,List.of("Action","Adventure","Drama"),peter);				 
-			Movie Lala = new Movie("LaLaland",2016,128,List.of("Comedy","Drama","Music"));     
-			
-			var movies = List.of(joker,parasite,interstellar,GT,impitoyable,AS,VBT,Avengers,AEndgame,mule,tonnerre,birdman,kingKong,Lala);
-			movies.forEach(repoMovies::save);
-	}
-	
-	@Rollback(false)
-	@Test
-	void testAddMovie() {			
-				
-		var actor = actorRepo.findAll().stream().map(a -> a.getPerson().getIdPerson() == 21);
-		System.out.println(actor.toString());
-	}
-	
-	@Rollback(false)
-	@Test
-	void testAddPersons() {
-		var gege = new Person("Gerard Darmon", LocalDate.of(1948, 2, 29),List.of("French","Morocco"));
-		repoPersons.saveAndFlush(gege);
+//			Movie joker = new Movie("Joker", 2019, 165,("Drama","Thriller"),todd);			 
+//			Movie parasite = new Movie("Parasite", 2019, 132,List.of("Comedy","Drama","Thriller"));		 		 
+//			Movie interstellar = new Movie("interstellar", 2014,157,List.of("Adventure","Drama","Sci-Fi"),chris);				 
+//			Movie GT = new Movie("Gran Torino", 2008, 116,List.of("Drama","Thriller"),clint);     
+//			Movie impitoyable = new Movie("Impitoyable", 1992, 131,List.of("Drama","Western"),clint);		 	 
+//			Movie AS = new Movie("American Sniper", 2014, 133, List.of("Action","Biography","Drame"),clint); 
+//			Movie VBT = new Movie("Very Bad Trip", 2009, 100,List.of("Comedy") ,todd); 	 
+//			Movie Avengers = new Movie("Avengers", 2012, 145,List.of("Action","Adventure","Sci-Fi"),joss);
+//			Movie AEndgame = new Movie("Avengers: Endgame", 2019, 181,List.of("Action","Adventure","Sci-Fi"));
+//			Movie mule = new Movie("La Mule",2018,116,List.of("Crime","Drama","Thriller"),clint); 
+//			Movie tonnerre = new Movie("Tonnerre sous les tropiques",2008,107,List.of("Comedy","War"));
+//			Movie birdman = new Movie("BirdMan",2014,119,List.of("Comedy","Drama"));
+//			Movie kingKong = new Movie("King Kong",2005,180,List.of("Action","Adventure","Drama"),peter);				 
+//			Movie Lala = new Movie("LaLaland",2016,128,List.of("Comedy","Drama","Music"));     
+//			
+//			var movies = List.of(joker,parasite,interstellar,GT,impitoyable,AS,VBT,Avengers,AEndgame,mule,tonnerre,birdman,kingKong,Lala);
+//			movies.forEach(repoMovies::save);
 	}
 
 }
-
-
-
