@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cinema.dto.FullPerson;
 import cinema.dto.LightPerson;
+import cinema.exception.PersonNotFoundException;
 import cinema.persistance.entity.Person;
 import cinema.service.IPersonService;
 
@@ -29,7 +30,13 @@ public class PersonController {
 	@GetMapping
 	@ResponseBody
 	public List<LightPerson> allPersons() {
-		return personService.getAllPersons();
+		List<LightPerson> persons = personService.getAllPersons();
+		
+		if (!persons.isEmpty()) {
+			return personService.getAllPersons();
+		}
+		
+		throw new PersonNotFoundException();
 	}
 	
 	@GetMapping("/{id}")

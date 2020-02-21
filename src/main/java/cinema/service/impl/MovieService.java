@@ -119,6 +119,7 @@ public class MovieService implements IMovieService {
 			m.setTitle(movieDto.getTitle());
 			m.setYear(movieDto.getYear());
 			m.setDuration(movieDto.getDuration());
+			m.setSynopsis(movieDto.getSynopsis());
 			movieRepository.flush();
 		});
 
