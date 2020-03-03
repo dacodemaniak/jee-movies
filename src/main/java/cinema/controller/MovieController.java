@@ -90,7 +90,7 @@ public class MovieController {
 		return movieService.addMovie(movie);
 	}
 
-
+	@CrossOrigin
 	@PutMapping("/modify")
 	@ResponseStatus(code = HttpStatus.OK, reason = "Movie was updated")
 	public @ResponseBody Optional<FullMovie> mofiyMovie(@RequestBody FullMovie movie) {

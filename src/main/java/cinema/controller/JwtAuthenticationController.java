@@ -31,6 +31,7 @@ public class JwtAuthenticationController {
 	@Autowired
 	private JwtUserDetailsService userDetailsService;
 	
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value="/authenticate", method=RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(
 			@RequestBody JwtRequest authenticationRequest
